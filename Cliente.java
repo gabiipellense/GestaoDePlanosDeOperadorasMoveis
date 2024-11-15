@@ -13,6 +13,13 @@ public class Cliente {
         this.plano = plano;
     }
 
+    public Cliente(String nome, String email, String telefone, Plano plano) {
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+        this.plano = plano;
+    }
+
     public int getId() {
         return id;
     }
@@ -51,5 +58,18 @@ public class Cliente {
 
     public void setPlano(Plano plano) {
         this.plano = plano;
+    }
+
+    @Override
+    public String toString() {
+        return  "\n-------------------------------"+
+                "\n           CLIENTE" +
+                "\n-------------------------------" +
+                "\nId = " + id +
+                "\nNome = " + nome +
+                "\nEmail = " + email +
+                "\nTelefone = " + telefone +
+                "\nPlano = " + plano +
+                "\n-------------------------------";
     }
 }

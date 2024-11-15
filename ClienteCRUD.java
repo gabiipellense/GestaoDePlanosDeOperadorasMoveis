@@ -128,6 +128,7 @@ public class ClienteCRUD {
             ps.setString(2, cliente.getEmail());
             ps.setString(3, cliente.getTelefone());
             ps.setInt(4, cliente.getPlano().getId());
+            ps.setInt(5, id);
 
             ps.execute() ;
 

@@ -135,6 +135,7 @@ public class PlanoCRUD {
             ps.setDouble(4, plano.getQuantidade_dados_bonus());
             ps.setString(5, plano.getBeneficios());
             ps.setDouble(6, plano.getValor());
+            ps.setInt(7, id);
 
             ps.execute() ;
         }

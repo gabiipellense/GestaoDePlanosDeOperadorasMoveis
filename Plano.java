@@ -18,6 +18,15 @@ public class Plano {
         this.valor = valor;
     }
 
+    public Plano(String operadora, String nome, double quantidade_dados, double quantidade_dados_bonus, String beneficios, double valor) {
+        this.operadora = operadora;
+        this.nome = nome;
+        this.quantidade_dados = quantidade_dados;
+        this.quantidade_dados_bonus = quantidade_dados_bonus;
+        this.beneficios = beneficios;
+        this.valor = valor;
+    }
+
     public String getNome() {
         return nome;
     }
