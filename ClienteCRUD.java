@@ -5,11 +5,11 @@ import java.util.List;
 public class ClienteCRUD {
 
     //create
-    public static Cliente acicionarCliente (Cliente cliente) {
+    public static Cliente adicionarCliente (Cliente cliente) {
 
         try (Connection connection = ConexaoBanco.getConnections()){
 
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO tb_cliente ( id, nome , email , telefone , id_plano) VALUES ( ? , ? , ? , ? , ? ) " , Statement.RETURN_GENERATED_KEYS) ;
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO tb_cliente ( id,nome,email,telefone,id_plano) VALUES ( ? , ? , ? , ? , ? ) " , Statement.RETURN_GENERATED_KEYS) ;
 
             ps.setInt(1 , cliente.getId());
             ps.setString(2, cliente.getNome());
@@ -18,7 +18,6 @@ public class ClienteCRUD {
             ps.setInt(5, cliente.getPlano().getId());
 
             ps.execute() ;
-
             ResultSet rs = ps.getGeneratedKeys();
 
             if (rs.next()) {

@@ -265,7 +265,7 @@ public class Main {
 
         Plano plano = PlanoCRUD.buscarPlanoPorId(id_plano) ;
 
-        return ClienteCRUD.acicionarCliente(new Cliente(nome , email , telefone , plano) ) ;
+        return ClienteCRUD.adicionarCliente(new Cliente(nome , email , telefone , plano) ) ;
 
     }
 
@@ -274,7 +274,7 @@ public class Main {
         System.out.println("Digite o Id do Cliente que você deseja buscar: ");
         int id = sc.nextInt();
 
-        ClienteCRUD.buscarClientePorId(id) ;
+        System.out.println(ClienteCRUD.buscarClientePorId(id) );
 
     }
 
