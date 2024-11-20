@@ -57,14 +57,14 @@ public class PlanoServicoCRUD {
     }
 
     //delete
-    public static void removerPlanoServico (int id_plano , int id_servico) throws SQLException {
+    public static void removerPlanoServico (Plano plano, ServicoAdicional servicoAdicional) throws SQLException {
 
         try (Connection connection = ConexaoBanco.getConnections()){
 
             PreparedStatement ps = connection.prepareStatement("DELETE FROM tb_plano_servico WHERE id_plano = ? AND id_servico = ?");
 
-            ps.setInt(1, id_plano);
-            ps.setInt(2, id_servico);
+            ps.setInt(1, plano.getId());
+            ps.setInt(2, servicoAdicional.getId() );
 
             ps.execute() ;
 

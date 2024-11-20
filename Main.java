@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-
     public static final Scanner sc = new Scanner(System.in) ;
     public static void main(String[] args) throws SQLException {
 
@@ -32,7 +31,15 @@ public class Main {
             System.out.println("14 - Atualizar um Serviço Adicional por Id ");
             System.out.println("15 - Remover Servico Adicional ");
             System.out.println("16 - Vincular um Servico Adicional a um Plano ");
-            System.out.println("17 - Vincular um Plano a um Contrato ");
+            System.out.println("17 - Buscar Serviço Por Plano ");
+            System.out.println("18 - Remover Serviço de Plano ");
+            System.out.println("19 - Vincular um Plano a um Contrato ");
+            System.out.println("20 - Buscar Cliente Por Plano ");
+            System.out.println("21 - Buscar Contrato Por Plano ");
+            System.out.println("22 - Atualizar Contrato ");
+            System.out.println("23 - Remover Contrato ");
+            System.out.println("24 - Buscar Todos os Contratos ");
+            System.out.println("25 - Buscar Contrato Por Id ");
             System.out.println(" 0 - Sair ");
             System.out.println("--------------------------------------------");
             resposta = sc.nextInt() ;
@@ -100,9 +107,43 @@ public class Main {
                     break;
 
                 case 16:
+                    vincularUmServicoComUmPlano();
                     break;
 
                 case 17:
+                    buscarServicoPorPlano();
+                    break;
+
+                case 18:
+                    removerPlanoServico();
+                    break;
+
+                case 19:
+                    adicionarContrato();
+                    break;
+
+                case 20:
+                    buscarClientePorPlano();
+                    break;
+
+                case 21:
+                    buscarContratoPorPlano();
+                    break;
+
+                case 22:
+                    atualizarContrato();
+                    break;
+
+                case 23:
+                    removerContrato();
+                    break;
+
+                case 24:
+                    buscarTodosOsContratos();
+                    break;
+
+                case 25:
+                    buscarContratoPorId();
                     break;
 
                 case 0 :
@@ -120,7 +161,6 @@ public class Main {
         ConexaoBanco.getConnections();
 
     }
-
     public static Plano adicionarPlano () {
 
         System.out.println("Digite a Operadora do Plano: ");
@@ -144,7 +184,6 @@ public class Main {
         return PlanoCRUD.adicionarPlano(new Plano(operadora, nome , quantidade_dados , quantidade_dados_bonus, beneficios , valor)) ;
 
     }
-
     public static void buscarPlanoPorId () {
 
         System.out.println("Digite o id do plano que você deseja buscar: ");
@@ -153,7 +192,6 @@ public class Main {
         System.out.println(PlanoCRUD.buscarPlanoPorId(id));
 
     }
-
     public static List<Plano> buscarPlanoPorOperadora () {
 
         System.out.println("Digite a operadora que você deseja pesquisar os planos ");
@@ -164,7 +202,6 @@ public class Main {
         return PlanoCRUD.buscarTodosOsPlanosDaOperadora(operadora) ;
 
     }
-
     public static void atualizarPlano () {
 
         System.out.println("Digite o id do plano que você deseja atualizar: ");
@@ -192,7 +229,6 @@ public class Main {
 
         System.out.println("Plano " + id + " atualizado com sucesso ");
     }
-
     public static void removerPlano () {
 
         System.out.println("Digite o id do plano que você deseja remover: ");
@@ -202,7 +238,6 @@ public class Main {
 
         System.out.println("Plano " + id + " removido com sucesso ");
     }
-
     public static ServicoAdicional adicionarServicoAdicional () {
 
         System.out.println("Digite a descrição do Serviço Adicional que você deseja adicionar: ");
@@ -214,7 +249,6 @@ public class Main {
         return ServicoAdicionalCRUD.AdicionarServicoAdicional(new ServicoAdicional(descricao , custo_mensal)) ;
 
     }
-
     public static void buscarServicoPorId () {
 
         System.out.println("Digite o Id do Serviço Adicional que você deseja buscar: ");
@@ -223,14 +257,12 @@ public class Main {
         System.out.println(ServicoAdicionalCRUD.buscarServicoAdicionalPorId(id));
 
     }
-
     public static List<ServicoAdicional> buscarTodosOsServicosAdicionais () {
 
         System.out.println(ServicoAdicionalCRUD.buscarTodosOsServicosAdicionais());
         return ServicoAdicionalCRUD.buscarTodosOsServicosAdicionais() ;
 
     }
-
     public static void atualizarServicoAdicional () {
 
         System.out.println("Digite o Id do Serviço Adicional que você deseja atualizar: ");
@@ -247,7 +279,6 @@ public class Main {
         System.out.println("Serviço Adicional " + id + " atualizado com sucesso ");
 
     }
-
     public static void removerServicoAdicional () {
 
         System.out.println("Digite o Id do Serviço Adicional que você deseja remover: ");
@@ -258,7 +289,6 @@ public class Main {
         System.out.println("Serviço Adicional " + id + " removido com sucesso ");
 
     }
-
     public static Cliente adicionarCliente () {
 
         System.out.println("Digite o nome do que Cliente que você deseja adicionar: ");
@@ -278,7 +308,6 @@ public class Main {
         return ClienteCRUD.adicionarCliente(new Cliente(nome , email , telefone , plano) ) ;
 
     }
-
     public static void buscarClientePorId () {
 
         System.out.println("Digite o Id do Cliente que você deseja buscar: ");
@@ -287,14 +316,12 @@ public class Main {
         System.out.println(ClienteCRUD.buscarClientePorId(id) );
 
     }
-
     public static List<Cliente> buscarTodosOsClientes () {
 
         System.out.println(ClienteCRUD.buscarTodosOsClientes());
         return ClienteCRUD.buscarTodosOsClientes() ;
 
     }
-
     public static void atualizarCliente () {
 
         System.out.println("Digite o Id do Cliente que você deseja atualizar: ");
@@ -316,8 +343,8 @@ public class Main {
 
         ClienteCRUD.atualizarCliente(new Cliente(nome, email, telefone, plano) , id);
 
+        System.out.println("--- Cliente Atualizado Com Sucesso ---");
     }
-
     public static void removerCliente () {
 
         try {
@@ -325,15 +352,14 @@ public class Main {
             int id = sc.nextInt();
 
             ClienteCRUD.removerCliente(id);
+            System.out.println("--- Cliente Removido com Sucesso ---");
         }
         catch (Exception e) {
 
             e.printStackTrace();
 
         }
-
     }
-
     public static PlanoServico vincularUmServicoComUmPlano () {
 
         System.out.println("Digite o Id do Serviço Adicional que você deseja vincular:");
@@ -348,9 +374,7 @@ public class Main {
 
         return PlanoServicoCRUD.adicionarServicoAPlano(new PlanoServico(plano,servico));
 
-
     }
-
     public static List<PlanoServico> buscarServicoPorPlano () {
 
         System.out.println("Digite o Id do Plano que você deseja buscar os serviços: ");
@@ -360,10 +384,106 @@ public class Main {
         return PlanoServicoCRUD.buscarPlanoServicoPorIdPlano(idPlano);
 
     }
+    public static void removerPlanoServico () throws SQLException{
 
-    public static void removerPlanoServico () {
+        System.out.println("Digite o Id do Plano vinculado ao Serviço Adicional: ");
+        int idPlano = sc.nextInt() ;
 
-        System.out.println("Digite o Id do ");
+        System.out.println("Digite o Id do Serviço Adicional vinculado ao Plano que você deseja apagar: ");
+        int idServico = sc.nextInt() ;
+
+        Plano plano = PlanoCRUD.buscarPlanoPorId(idPlano) ;
+        ServicoAdicional servicoAdicional = ServicoAdicionalCRUD.buscarServicoAdicionalPorId(idServico) ;
+
+        PlanoServicoCRUD.removerPlanoServico(plano,servicoAdicional);
+
+        System.out.println("--- Desvinculado com Sucesso ---");
+    }
+    public static List<Cliente> buscarClientePorPlano () {
+
+        System.out.println("Digite o Id do Plano que você deseja saber os Clientes: ");
+        int idPlano = sc.nextInt() ;
+
+        Plano plano = PlanoCRUD.buscarPlanoPorId(idPlano);
+
+        System.out.println(ClienteCRUD.buscarClientePorPlano(plano));
+        return ClienteCRUD.buscarClientePorPlano(plano) ;
+
+    }
+    public static Contrato adicionarContrato () {
+
+        System.out.println("Digite o Id do Plano que você deseja contratar: ");
+        int idPlano = sc.nextInt() ;
+
+        System.out.println("Digite os Termos do Contrato: ");
+        String termos = sc.next() ;
+
+        System.out.println("Digite a Data de Início do Contrato");
+        String data_inicio = sc.next() ;
+
+        System.out.println("Digite a Data de Fim do Contrato");
+        String data_fim = sc.next() ;
+
+        Plano plano = PlanoCRUD.buscarPlanoPorId(idPlano) ;
+
+        return ContratoCRUD.adicionarContrato(new Contrato(plano, termos, data_inicio, data_fim)) ;
+
+    }
+    public static Contrato buscarContratoPorPlano () {
+
+        System.out.println("Digite o Id do Plano que você deseja pesquisar o Contrato: ");
+        int idPlano = sc.nextInt() ;
+
+        System.out.println(ContratoCRUD.buscarContratoPorPlano(idPlano));
+        return ContratoCRUD.buscarContratoPorPlano(idPlano) ;
+
+    }
+    public static void atualizarContrato () {
+
+        System.out.println("Digite qual o Id do Contrato que você deseja atualizar: ");
+        int id = sc.nextInt() ;
+
+        System.out.println("Digite o Id do Plano atualizado: ");
+        int idPlano = sc.nextInt();
+
+        Plano plano = PlanoCRUD.buscarPlanoPorId(idPlano) ;
+
+        System.out.println("Digite os novos Termos: ");
+        String termos = sc.next();
+
+        System.out.println("Digite a nova Data previsa para o Início do Contrato: ");
+        String data_inicio = sc.next() ;
+
+        System.out.println("Digite a nova Data previsa para o Fim do Contrato: ");
+        String data_fim = sc.next() ;
+
+        ContratoCRUD.atualizarContrato(new Contrato(plano, termos, data_inicio, data_fim), id );
+
+        System.out.println("--- Contrato Atualizado Com Sucesso ---");
+    }
+    public static void removerContrato () {
+
+        System.out.println("Digite o Id do Contrato que você deseja apagar: ");
+        int id = sc.nextInt() ;
+
+        ContratoCRUD.removerContrato(id);
+
+        System.out.println("--- Contrato Removido com Sucesso ---");
+
+    }
+    public static List<Contrato> buscarTodosOsContratos () {
+
+        System.out.println(ContratoCRUD.buscarTodosOsContratos());
+        return ContratoCRUD.buscarTodosOsContratos();
+
+    }
+    public static void buscarContratoPorId () {
+
+        System.out.println("Digite o Id do Contrato que você deseja pesquisar: ");
+        int idContrato = sc.nextInt() ;
+
+        System.out.println(ContratoCRUD.buscarContratoPorId(idContrato));
+
     }
 }
 

@@ -13,6 +13,13 @@ public class Contrato {
         this.data_fim = data_fim;
     }
 
+    public Contrato(Plano plano, String termos, String data_inicio, String data_fim) {
+        this.plano = plano;
+        this.termos = termos;
+        this.data_inicio = data_inicio;
+        this.data_fim = data_fim;
+    }
+
     public int getId() {
         return id;
     }

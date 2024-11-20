@@ -62,6 +62,33 @@ public class ContratoCRUD {
         throw new RuntimeException("Nenhum contrato encontrado com o id " + id) ;
     }
 
+    public static Contrato buscarContratoPorPlano (int idPlano) {
+
+        try (Connection connection = ConexaoBanco.getConnections()){
+
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM tb_contrato WHERE id_plano = ? ");
+
+        ps.setInt(1, idPlano);
+
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+
+            int id = rs.getInt("id");
+            Plano plano = PlanoCRUD.buscarPlanoPorId(rs.getInt("id_plano"));
+            String termos = rs.getString("termos");
+            String data_inicio = rs.getString("data_inicio");
+            String data_fim = rs.getString("data_fim");
+            return new Contrato(id, plano, termos, data_inicio, data_fim) ;
+        }
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        throw new RuntimeException("Nenhum contrato vinculado ao Plano com Id " + idPlano);
+    }
+
     //read
     public static List<Contrato> buscarTodosOsContratos () {
 
@@ -91,7 +118,7 @@ public class ContratoCRUD {
     }
 
     //update
-    public static void atualizarContrato (int id , Contrato contrato) {
+    public static void atualizarContrato ( Contrato contrato, int id) {
 
         try (Connection connection = ConexaoBanco.getConnections()){
 

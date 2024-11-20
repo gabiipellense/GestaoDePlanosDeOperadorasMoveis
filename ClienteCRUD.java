@@ -116,6 +116,38 @@ public class ClienteCRUD {
         throw new RuntimeException("Nenhum cliente cadastrado") ;
     }
 
+    //read
+    public static List<Cliente> buscarClientePorPlano (Plano plano) {
+
+        try (Connection connection = ConexaoBanco.getConnections()){
+
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM tb_cliente WHERE id_plano = ?");
+
+            ps.setInt(1, plano.getId());
+
+            ResultSet rs = ps.executeQuery();
+            List<Cliente> clientes = new ArrayList<>();
+
+            while (rs.next()) {
+                clientes.add(new Cliente(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getString("email"),
+                        rs.getString("telefone"),
+                        plano
+
+                ));
+            }
+            return clientes ;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        throw new RuntimeException ("Nenhum Cliente vinculado ao Plano com Id " + plano.getId()) ;
+
+    }
+
     //update
     public static void atualizarCliente (Cliente cliente , int id ) {
 
