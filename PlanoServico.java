@@ -3,6 +3,11 @@ public class PlanoServico {
     private Plano plano;
     private ServicoAdicional servico ;
 
+    public PlanoServico(Plano plano, ServicoAdicional servico) {
+        this.plano = plano;
+        this.servico = servico;
+    }
+
     public Plano getPlano() {
         return plano;
     }

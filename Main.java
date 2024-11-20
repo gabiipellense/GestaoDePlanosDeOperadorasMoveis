@@ -1,3 +1,5 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
@@ -29,6 +31,8 @@ public class Main {
             System.out.println("13 - Buscar todos os Serviços Adicionais ");
             System.out.println("14 - Atualizar um Serviço Adicional por Id ");
             System.out.println("15 - Remover Servico Adicional ");
+            System.out.println("16 - Vincular um Servico Adicional a um Plano ");
+            System.out.println("17 - Vincular um Plano a um Contrato ");
             System.out.println(" 0 - Sair ");
             System.out.println("--------------------------------------------");
             resposta = sc.nextInt() ;
@@ -93,6 +97,12 @@ public class Main {
 
                 case 15 :
                     removerServicoAdicional();
+                    break;
+
+                case 16:
+                    break;
+
+                case 17:
                     break;
 
                 case 0 :
@@ -323,4 +333,37 @@ public class Main {
         }
 
     }
+
+    public static PlanoServico vincularUmServicoComUmPlano () {
+
+        System.out.println("Digite o Id do Serviço Adicional que você deseja vincular:");
+        int idServico = sc.nextInt() ;
+
+        System.out.println("Digite o Id do Plano que você deseja vincular o Serviço Adicional:");
+        int idPlano = sc.nextInt() ;
+
+        Plano plano = PlanoCRUD.buscarPlanoPorId(idPlano) ;
+
+        ServicoAdicional servico = ServicoAdicionalCRUD.buscarServicoAdicionalPorId(idServico);
+
+        return PlanoServicoCRUD.adicionarServicoAPlano(new PlanoServico(plano,servico));
+
+
+    }
+
+    public static List<PlanoServico> buscarServicoPorPlano () {
+
+        System.out.println("Digite o Id do Plano que você deseja buscar os serviços: ");
+        int idPlano = sc.nextInt();
+
+        System.out.println(PlanoServicoCRUD.buscarPlanoServicoPorIdPlano(idPlano));
+        return PlanoServicoCRUD.buscarPlanoServicoPorIdPlano(idPlano);
+
+    }
+
+    public static void removerPlanoServico () {
+
+        System.out.println("Digite o Id do ");
+    }
 }
+
