@@ -69,7 +69,7 @@ public class Cliente {
                 "\nNome = " + nome +
                 "\nEmail = " + email +
                 "\nTelefone = " + telefone +
-                "\nPlano = " + plano +
+                "\nPlano = " + plano.getId() +
                 "\n-------------------------------";
     }
 }

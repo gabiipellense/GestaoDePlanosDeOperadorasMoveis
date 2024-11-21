@@ -60,4 +60,17 @@ public class Contrato {
     public void setData_fim(String data_fim) {
         this.data_fim = data_fim;
     }
+
+    @Override
+    public String toString() {
+        return  "\n-------------------------------"+
+                "\n           CONTRATO            "+
+                "\n-------------------------------" +
+                "\nId = " + id +
+                "\nPlano = " + plano.getId() +
+                "\nTermos = " + termos +
+                "\nData de Início do Contrato = " + data_inicio +
+                "\nData de Fim do Contrato = " + data_fim +
+                "\n-------------------------------";
+    }
 }

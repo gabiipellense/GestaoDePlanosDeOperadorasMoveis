@@ -23,4 +23,14 @@ public class PlanoServico {
     public void setServico(ServicoAdicional servico) {
         this.servico = servico;
     }
+
+    @Override
+    public String toString() {
+        return  "\n-------------------------------"+
+                "\n             PLANO             "+
+                "\n-------------------------------" +
+                "\nPlano = " + plano.getId() +
+                "\nServico = " + servico.getId() +
+                "\n-------------------------------";
+    }
 }

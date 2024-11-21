@@ -12,7 +12,7 @@ public class ContratoCRUD {
 
         try (Connection connection = ConexaoBanco.getConnections()){
 
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO tb_contrato (id, id_plano, termos, data_inicio, data_fim) VALUES ( ? , ? , ? , ? , ?" , Statement.RETURN_GENERATED_KEYS) ;
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO tb_contrato (id, id_plano, termos, data_inicio, data_fim) VALUES ( ? , ? , ? , ? , ?)" , Statement.RETURN_GENERATED_KEYS) ;
 
             ps.setInt(1, contrato.getId());
             ps.setInt(2, contrato.getPlano().getId());

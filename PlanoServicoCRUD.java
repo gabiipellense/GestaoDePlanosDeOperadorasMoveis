@@ -32,7 +32,7 @@ public class PlanoServicoCRUD {
 
         try (Connection connection = ConexaoBanco.getConnections()){
 
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM tb_plano_servico WHERE id = ?") ;
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM tb_plano_servico WHERE id_plano = ?") ;
 
             ps.setInt(1 , id);
 
